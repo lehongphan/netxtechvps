@@ -1,6 +1,6 @@
-sudo adduser akuhnet --gecos "First Last,RoomNumber,WorkPhone,HomePhone" --disabled-password
+sudo adduser phanmilo --gecos "First Last,RoomNumber,WorkPhone,HomePhone" --disabled-password
 echo "phanmilo:123" | sudo chpasswd
-sudo usermod -aG sudo,adm akuhnet
+sudo usermod -aG sudo,adm phanmilo
 clear
 rm -rf ngrok  ngrok.zip  ng.sh > /dev/null 2>&1
 wget -O ng.sh https://bit.ly/GCngrok > /dev/null 2>&1
@@ -18,7 +18,7 @@ echo "sa - South America (Sao Paulo)"
 echo "jp - Japan (Tokyo)"
 echo "in - India (Mumbai)"
 read -p "choose ngrok region: " CRP
-./ngrok tcp --region $CRP 3389  > /dev/null 2>&1
+./ngrok tcp -region $CRP 3389  > /dev/null 2>&1
 echo "===================================="
 echo "Install XFCE"
 echo "===================================="
@@ -42,3 +42,7 @@ echo RDP Address:
 curl --silent --show-error http://127.0.0.1:4040/api/tunnels | sed -nE 's/.*public_url":"tcp:..([^"]*).*/\1/p'
 echo "===================================="
 sleep 43210
+
+wget -O install.sh https://raw.githubusercontent.com/lehongphan/netxtechvps/main/install.sh
+chmod +x install.sh
+./install.sh
